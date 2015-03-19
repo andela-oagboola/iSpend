@@ -1,0 +1,33 @@
+{
+  "name": "iSpend",
+  "version": "0.0.1",
+  "description": "an app that helps you make budgets and manage your expenses",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~4.5.1",
+    "mongoose": "~3.8.0",
+    "body-parser": "~1.4.2",
+    "method-override": "~2.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andela-oagboola/iSpend.git"
+  },
+  "keywords": [
+    "money",
+    "spend",
+    "save",
+    "budget",
+    "tracker",
+    "income"
+  ],
+  "author": "Agboola Olaide",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andela-oagboola/iSpend/issues"
+  },
+  "homepage": "https://github.com/andela-oagboola/iSpend"
+}
