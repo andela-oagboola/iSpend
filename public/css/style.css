@@ -1,0 +1,37 @@
+body { 
+  padding-top: 70px; 
+}
+
+#content {
+  background-image: url('../images/background_accounting.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: purple;
+  padding-bottom: 90px;
+  padding-top: 90px;
+  color: black;
+}
+#space {
+  background-color: white;
+  color: white;
+}
+#login {
+  margin-top: 10px;
+}
+#inputArea {
+  /*background-color: rgba(238, 110, 115, 0.5);*/
+  /*border-radius: 10px;*/
+  /*height: 515px;
+  border: 1px solid black;
+  margin: 10px 10px 10px 10px;
+  
+  padding: 10px;*/
+}
+#preference {
+  text-align: center;
+   margin-top: 10px;
+}
+#logo-container {
+  height: 57px;
+  margin-bottom: 32px;
+}

@@ -1,29 +1,19 @@
-var users = require("./models/users");
-//console.log(users);
+var Users = require("./controllers/usersCntrl");
+var Budget = require("./controllers/budgetCntrl");
 module.exports = function(app) {
-  app.get('/users', function(req, res) {
-    // console.log(users);
-    users.find({}, function(err, user) {
-      if (err) {
-        res.send(err);
-      }
-      res.json(user);
-    });
-  });
-
-  // app.post('/users', function(req, res) {
-  //   var body = req.body;
-  //   user = new User(body);
-  //   user.save(function() {});
-  // });
+  app.get('/users', Users.authenticate, Users.getUsers);
 
   app.get('/', function(req, res) {
-    // var name = req.params.biro;
-    // user.find({
-    //  name: name
-    // },function(err, data)) {
-    // }
-    //console.log(req);
     res.sendfile("./public/views/index.html");
   });
+
+  app.post('/signUp', Users.newUser);
+
+  app.post('/users/preference/:username/expenseManager', Budget.addCategory);
+
+  app.get('/users/preference/:username/expenseManager', Budget.getCategory);
+
+  app.post('/login', Users.login);
+
+  app.get('/logout', Users.logout);
 };

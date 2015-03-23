@@ -1,14 +1,21 @@
 var mongoose = require('mongoose');
-var budgetSchema = mongoose.Schema(
-{
-  category_name: [{
-   estimate: { type: Number},
-   item: {
-      item_name: { type: String },
-      price:     { type: Number }
-    }
-  }],
-  user_id: {type: String}
+var budgetSchema = mongoose.Schema({
+  category_name: {
+   type: String
+  },
+  estimate: {
+    type: String
+  },
+  // user_id: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "Users"
+  // },
+  user_id: {
+    type: String,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 });
-
-module.export = mongoose.model('budgets', budgetSchema, 'budgets');
+module.exports = mongoose.model('Budgets', budgetSchema, 'Budgets');

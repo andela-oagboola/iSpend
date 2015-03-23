@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var userSchema = mongoose.Schema({
-  first_name: {
+  firstname: {
     type: String,
     required: true
   },
@@ -8,17 +8,22 @@ var userSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  user_name: {
+  username: {
     type: String,
     required: true
   },
-  user_password: {
+  password: {
     type: String,
     required: true
   },
   email: {
     type: String,
     required: true
-  }
+  },
 });
-module.exports = mongoose.model('users', userSchema, 'users');
+
+userSchema.methods.validPassword = function(password) {
+  console.log(this.password, password);
+  return this.password === password;
+};
+module.exports = mongoose.model('Users', userSchema, 'Users');

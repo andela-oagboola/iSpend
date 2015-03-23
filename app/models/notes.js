@@ -1,16 +1,23 @@
 var mongoose = require("mongoose");
 var noteSchema = mongoose.Schema({
-   content: {
+  content: {
     type: String,
-  },
-  timeCreated: {
-    type: Date,
-    default: Date.now
   },
   status: {
     deleted: Boolean,
     default: false
+  },
+  editable: {
+    type: Boolean,
+    default: false
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"
   }
-  //userId: {}
 });
-module.export = mongoose.model('notes', toDoSchema, 'notes');
+module.exports = mongoose.model('Notes', toDoSchema, 'Notes');

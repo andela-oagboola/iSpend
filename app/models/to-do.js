@@ -3,14 +3,21 @@ var toDoSchema = mongoose.Schema({
   item: {
     type: String,
   },
-  timeCreated: {
+  status: {
+    type: Boolean,
+    default: false
+  },
+  editable: {
+    type: Boolean,
+    default: false
+  },
+  createdAt: {
     type: Date,
     default: Date.now
   },
-  status: {
-    deleted: Boolean,
-    default: false
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"
   }
-  //userId
 });
-module.export = mongoose.model('toDo', toDoSchema, 'toDo');
+module.exports = mongoose.model('ToDo', toDoSchema, 'ToDo');
