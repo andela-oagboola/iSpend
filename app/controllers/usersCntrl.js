@@ -1,5 +1,5 @@
 "use strict";
-
+var mongoose = require("mongoose");
 var Users = require("../models/users");
 var passport = require('passport');
 
@@ -13,7 +13,7 @@ module.exports = {
     });
   },
 
-  newUser: function(req, res) {
+  addUser: function(req, res) {
     var body = req.body;
     Users.create(body, function(err, user) {
       // console.log("4", user);
@@ -31,6 +31,17 @@ module.exports = {
           res.json(user);
         }
       });
+    });
+  },
+
+  getSingleUser: function(req, res) {
+   // var id = mongoose.Types.ObjectId.fromString( req.params.userId );
+    var id = req.params.userId ;
+    Users.findOne({ _id: id } ).exec( function(err, user) {
+      if(err) {
+        res.json(err);
+      }
+      res.json(user);
     });
   },
 

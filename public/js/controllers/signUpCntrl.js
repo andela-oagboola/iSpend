@@ -8,7 +8,8 @@ signUp.controller('signUpCntrl', ['$scope', 'getResource', '$rootScope', functio
         password: $scope.passwrd,
         email: $scope.email
       };
-      $scope.username = $rootScope.username;
+      // $scope.username = $rootScope.username;
+      $rootScope.username = $scope.username;
       getResource.createUser($scope.User).success(function (data) {
         console.log("yerhh ",data);
       });

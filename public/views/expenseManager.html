@@ -1,15 +1,3 @@
-<!-- <div ng-repeat="category in categories">
-  <a href="#/users/categories/{{username}}/{{categoryName}}"><p>{{category.estimate}}</p></a>
-</div>
-<button ng-click="createCategory(index)">New Category</button>
-<div ng-show="newbudget">
-  Category: <input type="text" ng-model="category">
-  Estimate: <input type="text" ng-model="estimate">
- <button ng-click="addCategory()">Add</button>
-</div>
-<a href="#/"><button>Home</button></a>
-<a href="#/users/preference"><button>BACK</button></a>
- -->
 <div class="row container-fluid">
   <div class="col-md-4">
     <ul class="side-nav fixed" style="width: 350px;">
@@ -19,9 +7,11 @@
         </a>
       </li>
       <div class="collection" ng-repeat="category in categories">
-        <a href="#/users/categories/{{username}}/{{categoryName}}" class="collection-item">{{category.estimate}}</a>
+        <a class="collection-item" ng-click="viewCatgeory($index)">{{category.category_name}}</a>
       </div>
-      <button ng-click="createCategory(index)" class="waves-effect waves-light btn">New Category</button>
+      <button ng-click="createCategory()" class="waves-effect waves-light btn">New Category</button><br>
+      <a href="#/"><button class="waves-effect waves-light btn">Home</button></a>
+      <a href="#/users/preference"><button class="waves-effect waves-light btn">BACK</button></a>
     </ul>
   </div>
   <div class="row container">

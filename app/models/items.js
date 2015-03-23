@@ -10,9 +10,9 @@ var itemSchema = mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  category_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Budgets"
-  }
+  // category_id: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "Budgets"
+  // }
 });
 module.exports = mongoose.model("Items", itemSchema, "Items");

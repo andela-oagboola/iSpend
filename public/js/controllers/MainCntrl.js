@@ -8,7 +8,7 @@ main.controller('MainCntrl', ['$scope', 'getResource', 'Data', '$rootScope', fun
     $scope.details = {
       username: $scope.username,
       passowrd: $scope.password
-    }
+    };
     getResource.verifyUser($scope.details).success(function (data) {
       console.log(data);
     });

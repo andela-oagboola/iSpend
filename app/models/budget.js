@@ -1,18 +1,20 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 var budgetSchema = mongoose.Schema({
   category_name: {
    type: String
   },
   estimate: {
-    type: String
+    type: Number
+  },
+  user: {
+    type: Schema.ObjectId,
+    ref: "Users"
   },
   // user_id: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "Users"
+  //   type: String,
+  //   ref: 'Users'
   // },
-  user_id: {
-    type: String,
-  },
   createdAt: {
     type: Date,
     default: Date.now
