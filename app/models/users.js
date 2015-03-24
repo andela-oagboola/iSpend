@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var ObjectId = mongoose.Types.ObjectId;
 var userSchema = mongoose.Schema({
   firstname: {
     type: String,
@@ -19,7 +20,12 @@ var userSchema = mongoose.Schema({
   email: {
     type: String,
     required: true
-  },
+  }
+  // budget: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "Budgets",
+  //   default: new ObjectId()
+  // }
 });
 
 userSchema.methods.validPassword = function(password) {

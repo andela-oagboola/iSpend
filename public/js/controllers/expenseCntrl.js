@@ -1,12 +1,12 @@
 var expense = angular.module("expense", []);
 
-expense.controller('expenseCntrl', ['$scope', '$rootScope', 'category', 'User', function($scope, $rootScope, category, User){
-
-  User.getUserDetails().success(function(data) {
-    $scope.user_id = data[0]._id;
-    //console.log($scope.user_id);
-  });
-  category.getCategory().success(function(data) {
+expense.controller('expenseCntrl', ['$scope', '$rootScope', 'budget', 'User', function($scope, $rootScope, budget, User){
+  $scope.user = $rootScope.user;
+  // User.getUserDetails().success(function(data) {
+  //   $scope.user_id = data[0]._id;
+  //   console.log($scope.user_id);
+  // });
+  budget.getBudget().success(function(data) {
     console.log(data);
     $scope.categories = data;
   });
@@ -16,21 +16,23 @@ expense.controller('expenseCntrl', ['$scope', '$rootScope', 'category', 'User', 
     $scope.newCategory = false;
   };
   $scope.addCategory = function() {
-    console.log($scope.user_id);
+    console.log($scope.user);
     $scope.name = $rootScope.username;
     $scope.budget = {
-      category_name: $scope.category,
+      name: $scope.category,
       estimate: $scope.estimate,
-      user:  $scope.user_id
+      user:  $scope.user._id
     };
     $scope.categories.push({category_name: $scope.category, estimate: $scope.estimate});
-    category.newCategory($scope.budget).success(function(data) {
+    budget.newBudget($scope.budget).success(function(data) {
       console.log(data);
+    }).error(function(err) {
+      console.log(err);
     });
   };
   $scope.viewCatgeory = function(index) {
     console.log("clicked");
     $scope.user_id = $scope.categories[index].user_id;
-    category.getItems($scope.user_id).success(function () {});
+    budget.getItems($scope.user_id).success(function () {});
   };
 }]);

@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
 require('./config/passport')();
+
 app.use(passport.initialize());
 
 app.use(passport.session());

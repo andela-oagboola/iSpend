@@ -15,16 +15,13 @@ module.exports = {
 
   addUser: function(req, res) {
     var body = req.body;
+    console.log("body ", body);
     Users.create(body, function(err, user) {
-      // console.log("4", user);
-      // console.log("5", req.body);
       if (err) {
         res.json(err);
       }
       user.password = undefined;
-
       req.login(user, function(err) {
-        // console.log("3", err);
         if (err) {
           res.status(400).send(err);
         } else {
@@ -37,7 +34,7 @@ module.exports = {
   getSingleUser: function(req, res) {
    // var id = mongoose.Types.ObjectId.fromString( req.params.userId );
     var id = req.params.userId ;
-    Users.findOne({ _id: id } ).exec( function(err, user) {
+    Users.findById(id, function(err, user) {
       if(err) {
         res.json(err);
       }
@@ -45,18 +42,28 @@ module.exports = {
     });
   },
 
+  addBudget: function(req, res) {
+    var body = req.body;
+    console.log("new budget", body);
+    console.log("user id ", req.params);
+    Users.where({_id: req.params.userId}).update({budget: body._id}).exec(function(err, user) {
+      if(err) {
+        console.log("err ", err);
+        res.json(err);
+      }
+      res.json(user);
+        console.log("user ", user);
+    });
+  },
+
+
   login: function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
-      // console.log(7, info);
       if (err || !user) {
         res.status(400).send(info);
       } else {
         user.password = undefined;
-        // console.log(8, user);
         req.login(user, function(err) {
-          // console.log(0, req.user);
-          //   console.log(6, user);
-          //  console.log(5, err);
           if (err) {
             res.status(400).send(err);
           } else {
@@ -68,9 +75,7 @@ module.exports = {
   },
 
   logout: function(req, res) {
-    // console.log(40, req.user);
     req.logout();
-    // console.log(30, req.user);
     res.json({
       message: 'User logged out successfully'
     });

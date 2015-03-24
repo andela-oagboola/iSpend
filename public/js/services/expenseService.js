@@ -1,14 +1,19 @@
 var expenseService = angular.module("expenseService", []);
-expenseService.factory("category", function($http) {
+expenseService.factory("budget", function($http) {
   return {
-    newCategory: function (newBudget) {
-      return $http.post('/users/new-category', newBudget);
+    newBudget: function (newBudget) {
+      return $http.post('/budget/new-budget', newBudget);
     },
-    getCategory: function() {
-      return $http.get('/categories');
+    getBudget: function() {
+      return $http.get('/budgets');
     },
     getItems: function(userId) {
       return $http.get('/users/categories/:userId');
-    }
+    },
+    // addToUser: function(budget, userId) {
+    //   console.log(budget);
+    //   // var userId = budget._id;
+    //   return $http.post('/users/' + userId + '/new-budget', {budget: budget._id});
+    // }
   };
 });

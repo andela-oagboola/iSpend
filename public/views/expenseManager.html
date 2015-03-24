@@ -2,12 +2,12 @@
   <div class="col-md-4">
     <ul class="side-nav fixed" style="width: 350px;">
       <li class="logo">
-        <a href="" id="logo-container" class="brand-logo">
+        <a href="" id="logo-container" class="brand-logo" id="mySidenav">
             <object id="front-page-logo" type="image/svg+xml"></object>
         </a>
       </li>
       <div class="collection" ng-repeat="category in categories">
-        <a class="collection-item" ng-click="viewCatgeory($index)">{{category.category_name}}</a>
+        <a class="collection-item" ng-click="viewCatgeory($index)">{{category.name}}</a>
       </div>
       <button ng-click="createCategory()" class="waves-effect waves-light btn">New Category</button><br>
       <a href="#/"><button class="waves-effect waves-light btn">Home</button></a>

@@ -2,9 +2,9 @@ var Budget = require("../models/budget");
 var Items = require("../models/items");
 var User = require("../models/users");
 module.exports = {
-  addCategory: function(req, res) {
+  addBudget: function(req, res) {
     var body = req.body;
-    console.log(body);
+    console.log("new cat ", body);
     Budget.create(body, function(err, budgets) {
       if (err) {
         res.json(err);
@@ -13,7 +13,7 @@ module.exports = {
     });
   },
 
-  getCategories: function(req, res) {
+  getBudgets: function(req, res) {
     Budget.find({}, function(err, budgets) {
       if(err) {
         res.json(err);
@@ -22,8 +22,8 @@ module.exports = {
     });
   },
 
-  getEachCategory: function(req, res) {
-    Budget.findById(req.params.categoryId, function(err, budgets) {
+  getEachBudget: function(req, res) {
+    Budget.findById(req.params.budgetId, function(err, budgets) {
       if(err) {
         res.json(err);
       }
@@ -31,10 +31,10 @@ module.exports = {
     });
   },
 
-  getUserCategories: function (req, res) {
+  getUserBudget: function (req, res) {
     console.log("jgfhjsgvhkgahjv");
     console.log(req.params);
-    Budget.find({_id: req.params.userId}).populate("user, _id").exec(function (err, budgets) {
+    Budget.find({user: req.params.userId}).exec(function (err, budgets) {
       if (err) {
         console.log("error");
         res.json(err);
@@ -44,9 +44,9 @@ module.exports = {
     });
   },
 
-  deleteCategory: function(req, res) {
+  deleteBudget: function(req, res) {
     var body = req.params.body;
-    Items.remove({category_id: body._id}, function(err, item) {
+    Items.remove({budget_id: body._id}, function(err, item) {
       if(err) {
         res.json(err);
       }
