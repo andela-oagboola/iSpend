@@ -13,7 +13,8 @@ var expenseApp = angular.module("expenseApp", [
   'getSingleUser',
   'retrieveUser',
   'categoryMod',
-  'categoryService'
+  'categoryService',
+  'ngCookies'
   ]);
 
 expenseApp.config(['$routeProvider', function($routeProvider) {

@@ -3,6 +3,9 @@ var toDoSchema = mongoose.Schema({
   item: {
     type: String,
   },
+  title: {
+    type: String,
+  },
   status: {
     type: Boolean,
     default: false

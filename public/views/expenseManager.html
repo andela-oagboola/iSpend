@@ -6,9 +6,11 @@
             <object id="front-page-logo" type="image/svg+xml"></object>
         </a>
       </li>
-      <div class="collection" ng-repeat="category in categories">
+      <li ng-repeat="category in categories">
+        <div class="collection">
         <a class="collection-item" ng-click="viewCatgeory($index)">{{category.name}}</a>
       </div>
+      </li>
       <button ng-click="createCategory()" class="waves-effect waves-light btn">New Category</button><br>
       <a href="#/"><button class="waves-effect waves-light btn">Home</button></a>
       <a href="#/users/preference"><button class="waves-effect waves-light btn">BACK</button></a>
@@ -29,11 +31,11 @@
       </div>
       <div class="col-md-5"> List of items in chosen category
         <ul class="collection" ng-repeat="item in items">
-          <li class="collection-item">{{item.name}}<span class="new badge">{{item.price}}</span></li>
+          <a class="collection-item">{{item.name}}<span class="new badge">{{item.price}}</span></a>
         </ul>
         <div ng-show="addItemField">
           <input type="text" placeholder="Item" ng-model="item"> <input type="text" placeholder="Price" ng-model="price">
-          <button ng-click="addItem()">Add</button>
+          <button ng-click="addItem()" class="waves-effect waves-light btn">Add</button>
         </div>
       <button class="waves-effect waves-light btn" ng-click="addMoreItems()">Add more items</button>
       </div>

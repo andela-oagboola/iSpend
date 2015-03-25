@@ -1,5 +1,5 @@
 var expenseService = angular.module("expenseService", []);
-expenseService.factory("budget", function($http) {
+expenseService.factory("budget", function($http, $cookies) {
   return {
     newBudget: function (newBudget) {
       return $http.post('/budget/new-budget', newBudget);

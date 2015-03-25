@@ -38,7 +38,7 @@ module.exports = {
   },
 
   updateNote: function(req, res) {
-    Notes.update({title: req.body.title, content: req.body.content}, function(err, number, raw) {
+    Notes.update({_id: req.params.noteId}, {$set: {title: req.body.title, content: req.body.content}}, function(err, number, raw) {
       if(err) {
         res.json(err);
       }

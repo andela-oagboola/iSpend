@@ -1,5 +1,5 @@
 var services = angular.module("expenseApp");
-services.factory('getResource', ['$http', function($http){
+services.factory('getResource', ['$http', '$cookies', function($http, $cookies){
   return {
     verifyUser: function (details) {
        return $http.post('/login', details);
@@ -9,7 +9,12 @@ services.factory('getResource', ['$http', function($http){
     },
     currentUser: function(user) {
       return user;
+    },
+    setCookies: function (user) {
+      $cookies.put('loggedInUser', user);
+      var presentUser = $cookies.get('loggedInUser');
+      return presentUser;
     }
   };
-  console.log($scope.currentUser);
+  
 }]);

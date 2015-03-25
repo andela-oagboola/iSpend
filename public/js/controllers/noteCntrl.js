@@ -2,10 +2,13 @@ var note = angular.module("note", []);
 note.controller('noteCntrl', ['$scope', 'notes', '$rootScope', function($scope, notes, $rootScope){
   $scope.user = $rootScope.user;
 
-  notes.getNotes($scope.user._id).success(function(result) {
-    $scope.retrievedNotes = result;
-    console.log(result);
-  });
+  $scope.displayNotes = function() {
+    notes.getNotes($scope.user._id).success(function(result) {
+      $scope.retrievedNotes = result;
+      console.log(result);
+    });
+  };
+  $scope.displayNotes();
   $scope.showNoteArea = function() {
     $scope.existingNoteField = false;
     $scope.newNoteField = true;
@@ -17,12 +20,12 @@ note.controller('noteCntrl', ['$scope', 'notes', '$rootScope', function($scope, 
       content: $scope.newNote,
       user: $scope.user._id
     };
-    console.log($scope.note);
     notes.createNote($scope.note).success(function(result) {
       console.log(result);
     }).error(function(err) {
       console.log(err);
     });
+    $scope.displayNotes();
   };
   $scope.updateNote = function() {
     $scope.existingNoteField = false;
@@ -31,11 +34,12 @@ note.controller('noteCntrl', ['$scope', 'notes', '$rootScope', function($scope, 
       title: $scope.existingTitle,
       content: $scope.existingNote
     };
-    notes.updateNote($scope.note, $scope.user._id).success(function(res) {
+    notes.updateNote($scope.note, $scope.selectedNote._id).success(function(res) {
       console.log(res);
     }).error(function(err) {
       console.log(err);
     });
+    $scope.displayNotes();
   };
   $scope.viewNote = function(index) {
     $scope.selectedNote = $scope.retrievedNotes[index];

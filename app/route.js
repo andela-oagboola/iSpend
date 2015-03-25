@@ -37,7 +37,7 @@ module.exports = function(app) {
 
   app.get('/notes/:userId', note.getNoteByUser);
 
-  app.post('/update/note/:userId', note.updateNote);
+  app.post('/update/note/:noteId', note.updateNote);
 
   app.post('/login', users.login);
 

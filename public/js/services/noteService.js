@@ -7,8 +7,8 @@ noteService.factory('notes', ['$http', function($http) {
     getNotes: function(userId) {
       return $http.get('/notes/' + userId);
     },
-    updateNote: function(note, userId) {
-      return $http.post('/update/note/' + userId, note);
+    updateNote: function(note, noteId) {
+      return $http.post('/update/note/' + noteId, note);
     }
   };
 }]);
