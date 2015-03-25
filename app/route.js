@@ -1,4 +1,4 @@
-var Users = require("./controllers/usersCntrl");
+var users = require("./controllers/usersCntrl");
 var Budget = require("./controllers/budgetCntrl");
 var Item = require("./controllers/itemCntrl");
 module.exports = function(app) {
@@ -7,27 +7,27 @@ module.exports = function(app) {
     res.sendfile("./public/views/index.html");
   });
 
-  app.get('/budgets', Budget.getBudgets);
+  app.get('/budgets', users.authenticate, Budget.getBudgets);
   
-  app.get('/users', Users.getUsers);
+  app.get('/users', users.authenticate, users.getUsers);
 
   app.post('/item/newitem', Item.addItem);
 
-  // app.post('/users/:userId/new-budget', Users.addBudget);
+  // app.post('/users/:userId/new-budget', users.addBudget);
 
   app.post('/budget/new-budget', Budget.addBudget);
 
-  app.get('/users/:userId', Users.getSingleUser);
+  app.get('/users/:userId', users.getSingleUser);
 
   app.get('/budget/:budgetId', Budget.getEachBudget);
 
-  app.post('/signUp', Users.addUser);
+  app.post('/signUp', users.addUser);
 
-  app.get('/budget/:userId/budget', Budget.getUserBudget);
+  app.get('/budgets/:userId', Budget.getUserBudget);
 
   app.get('/items', Item.getAllItems);
 
-  app.post('/login', Users.login);
+  app.post('/login', users.login);
 
-  app.get('/logout', Users.logout); 
+  app.get('/logout', users.logout); 
 };

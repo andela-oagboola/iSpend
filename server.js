@@ -1,6 +1,8 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var bodyParser     = require('body-parser');
+var session = require('express-session');
+var logger = require('morgan');
 var db = require("./config/db");
 var passport = require('passport');
 var routes = require("./app/route");
@@ -12,17 +14,25 @@ mongoose.connect(db.url);
 // dba.once('open', function callback() {
 //   console.log("we connected ");
 // });
+
+app.use(logger('dev'));
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/public'));
 
-require('./config/passport')();
+app.use(session({
+  secret:'ispend',
+  resave: true,
+  saveUninitialized: true
+}));
+
 
 app.use(passport.initialize());
 
 app.use(passport.session());
+require('./config/passport')();
 
 routes(app);
 

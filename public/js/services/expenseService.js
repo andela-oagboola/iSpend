@@ -7,6 +7,10 @@ expenseService.factory("budget", function($http) {
     getBudget: function() {
       return $http.get('/budgets');
     },
+
+    getUserBudget: function(userId) {
+      return $http.get('/budgets/'+userId)
+    },
     getItems: function(userId) {
       return $http.get('/users/categories/:userId');
     },

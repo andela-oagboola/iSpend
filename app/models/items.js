@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
-var itemSchema = mongoose.Schema({
+var Schema = mongoose.Schema;
+var itemSchema = Schema({
   name: {
     type: String
   },
@@ -10,9 +11,8 @@ var itemSchema = mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  // category_id: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "Budgets"
-  // }
+  budget: {
+    type:  Schema.ObjectId
+  }
 });
 module.exports = mongoose.model("Items", itemSchema, "Items");

@@ -1,12 +1,12 @@
 var expense = angular.module("expense", []);
 
-expense.controller('expenseCntrl', ['$scope', '$rootScope', 'budget', 'User', function($scope, $rootScope, budget, User){
+expense.controller('expenseCntrl', ['$scope', '$rootScope', 'budget', 'User', '$timeout', function($scope, $rootScope, budget, User, $timeout){
   $scope.user = $rootScope.user;
   // User.getUserDetails().success(function(data) {
   //   $scope.user_id = data[0]._id;
   //   console.log($scope.user_id);
   // });
-  budget.getBudget().success(function(data) {
+  budget.getUserBudget($scope.user._id).success(function(data) {
     console.log(data);
     $scope.categories = data;
   });
@@ -23,7 +23,9 @@ expense.controller('expenseCntrl', ['$scope', '$rootScope', 'budget', 'User', fu
       estimate: $scope.estimate,
       user:  $scope.user._id
     };
-    $scope.categories.push({category_name: $scope.category, estimate: $scope.estimate});
+
+    $scope.categories.push({name: $scope.category, estimate: $scope.estimate});
+    
     budget.newBudget($scope.budget).success(function(data) {
       console.log(data);
     }).error(function(err) {

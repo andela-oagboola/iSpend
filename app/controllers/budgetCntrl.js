@@ -34,7 +34,7 @@ module.exports = {
   getUserBudget: function (req, res) {
     console.log("jgfhjsgvhkgahjv");
     console.log(req.params);
-    Budget.find({user: req.params.userId}).exec(function (err, budgets) {
+    Budget.find({user: req.user._id}).exec(function (err, budgets) {
       if (err) {
         console.log("error");
         res.json(err);
