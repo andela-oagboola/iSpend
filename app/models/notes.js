@@ -1,5 +1,8 @@
 var mongoose = require("mongoose");
 var noteSchema = mongoose.Schema({
+  title: {
+    type: String,
+  },
   content: {
     type: String,
   },
@@ -15,9 +18,9 @@ var noteSchema = mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  user_id: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Users"
   }
 });
-module.exports = mongoose.model('Notes', toDoSchema, 'Notes');
+module.exports = mongoose.model('Notes', noteSchema, 'Notes');

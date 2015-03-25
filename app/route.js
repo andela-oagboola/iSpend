@@ -1,6 +1,8 @@
 var users = require("./controllers/usersCntrl");
 var Budget = require("./controllers/budgetCntrl");
 var Item = require("./controllers/itemCntrl");
+var note = require("./controllers/notesCntrl");
+
 module.exports = function(app) {
 
   app.get('/', function(req, res) {
@@ -28,6 +30,14 @@ module.exports = function(app) {
   app.get('/items', Item.getAllItems);
 
   app.get('/items/:budgetId', Item.getItemByBudget);
+
+  app.get('/notes', note.getAllNotes);
+
+  app.post('/note/newnote', note.addNote);
+
+  app.get('/notes/:userId', note.getNoteByUser);
+
+  app.post('/update/note/:userId', note.updateNote);
 
   app.post('/login', users.login);
 

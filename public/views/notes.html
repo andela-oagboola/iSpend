@@ -1,17 +1,41 @@
 <div class="container-fluid">
+
   <div class="col-md-4">
     <ul class="side-nav fixed" style="width: 350px;">
       <li class="logo">
         <a href="" id="logo-container" class="brand-logo" id="mySidenav">
-            <object id="front-page-logo" type="image/svg+xml"></object>
+          <object id="front-page-logo" type="image/svg+xml"></object>
         </a>
       </li>
-      <div class="collection" ng-repeat="category in categories">
-        <a class="collection-item" ng-click="viewCatgeory($index)">{{category.name}}</a>
-      </div>
-      <button ng-click="createCategory()" class="waves-effect waves-light btn">New Note</button><br>
-      <a href="#/"><button class="waves-effect waves-light btn">Home</button></a>
-      <a href="#/users/preference"><button class="waves-effect waves-light btn">BACK</button></a>
+      <li ng-click="viewNote($index)" ng-repeat="note in retrievedNotes">
+        <div class="collection">
+          <a class="collection-item">{{note.title}}</a>
+        </div>
+      </li>
+      <li>
+        <button ng-click="showNoteArea()" class="waves-effect waves-light btn">New Note</button><br>
+      </li>
+      <li>
+        <a href="#/"><button class="waves-effect waves-light btn">Home</button></a>
+      </li>
+      <li>
+        <a href="#/users/preference"><button class="waves-effect waves-light btn">BACK</button></a>
+      </li>
     </ul>
+  </div>
+
+  <div class="col-md-8">
+    <div class="input-field" ng-show="newNoteField">
+      <input type="text" placeholder="Title" ng-model="newTitle">
+      <textarea id="textarea1" class="materialize-textarea" ng-model="newNote"></textarea>
+      <label for="textarea1">Type your note here</label>
+      <button class="waves-effect waves-light btn" ng-click="createNote()">Add Note</button>
+    </div>
+    <div class="input-field" ng-show="existingNoteField">
+      <input type="text" placeholder="Title" ng-model="existingTitle">
+      <textarea id="textarea2" class="materialize-textarea" ng-model="existingNote"></textarea>
+      <label for="textarea2">Your note</label>
+      <button class="waves-effect waves-light btn" ng-click="updateNote()">Done</button>
+    </div>
   </div>
 </div>

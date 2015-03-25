@@ -15,7 +15,7 @@ var toDoSchema = mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  user_id: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Users"
   }
