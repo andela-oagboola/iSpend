@@ -29,6 +29,7 @@
     "bootstrap": "latest",
     "font-awesome": "latest",
     "animate.css": "latest",
-    "angular-route": "latest"
+    "angular-route": "latest",
+    "materialize": "~0.95.3"
   }
 }

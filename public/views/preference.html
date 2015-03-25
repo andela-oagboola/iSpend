@@ -1,11 +1,85 @@
 <div class="row container-fluid">
-  <div class="col-md-12 bg-primary">
-    <p class="text-center"><h4>Preference</h4></p><br><br>
+  <div class="col-md-12">
+    <div class="row container-fluid">
+      <div class="col-md-12">
+        <p class="text-center"><h4>Preference</h4></p><br><br>
+      </div>
+    </div>
+    <div class="row container-fluid">
+
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img src="../images/Ruler_Calculator.jpg" class="activator">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">
+              <a href="#/users/preference/{{name}}/expenseManager"><button class="waves-effect waves-light btn" ng-click="manager()">Expense Manager</button>
+              </a>
+              <i class="mdi-navigation-more-vert right"></i>
+            </span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Title
+              <i class="mdi-navigation-close right"></i>
+            </span>
+            <p>stuff</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img src="../images/Great-To-Do-List.jpg" class="activator">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">
+              <a href="#/users/preference/{{name}}/toDo"><button class="waves-effect waves-light btn" ng-click="manager()">To Do list</button>
+              </a>
+              <i class="mdi-navigation-more-vert right"></i>
+            </span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Title
+              <i class="mdi-navigation-close right"></i>
+            </span>
+            <p>stuff</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img src="../images/Notes.png" class="activator" style="height: 277px;">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">
+              <a href="#/users/preference/{{name}}/notes"><button class="waves-effect waves-light btn" ng-click="manager()">Notes</button>
+              </a>
+              <i class="mdi-navigation-more-vert right"></i>
+            </span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Title
+              <i class="mdi-navigation-close right"></i>
+            </span>
+            <p>stuff</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
+  <!-- <div class="col-md-12">
+    <p class="text-center" id="prefs"><h4>Preference</h4></p><br><br>
+  </div>
+
   <div class="col-md-4">
     <div class="card">
       <div class="card-image waves-effect waves-block waves-light">
-        <img src="../images/background_accounting.jpg" class="activator">
+        <img src="../images/Ruler_Calculator.jpg" class="activator">
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4">
@@ -13,7 +87,6 @@
           </a>
           <i class="mdi-navigation-more-vert right"></i>
         </span>
-        <p>Random link</p>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">Title
@@ -22,13 +95,14 @@
         <p>stuff</p>
       </div>
     </div>
-    <!-- <a href="#/users/preference/{{name}}/expenseManager"><button class="waves-effect waves-light btn" ng-click="manager()">Expense Manager</button>
-    </a> -->
   </div>
+
   <div class="col-md-4">
     <a href="#/users/preference/{{name}}/toDo"><button class="waves-effect waves-light btn" ng-click="toDo()">To Do</button></a>
   </div>
+
   <div class="col-md-4">
     <a href="#/users/preeference/{{name}}/notes"><button class="waves-effect waves-light btn" ng-click="notes()">Notes</button>
-  </div>
+  </div> -->
+
 </div>

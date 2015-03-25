@@ -14,11 +14,29 @@
       <a href="#/users/preference"><button class="waves-effect waves-light btn">BACK</button></a>
     </ul>
   </div>
-  <div class="row container">
-    <div class="col-md-8" ng-show="newbudget">
-      Category: <input type="text" ng-model="category">
-      Estimate: <input type="text" ng-model="estimate">
-      <button ng-click="addCategory()" class="waves-effect waves-light btn">Add</button>
+  <div class="col-md-8">
+    <div class="row container" ng-show="newbudget">
+        Category: <input type="text" ng-model="category">
+        Estimate: <input type="text" ng-model="estimate">
+        <button ng-click="addCategory()" class="waves-effect waves-light btn">Add</button>
     </div>
-  </div> 
+    <div class="row container-fluid" ng-show="budgetSummary">
+      <div class="col-md-5">
+        <div class="jumbotron" id="jumboBox">
+          <h4>Estimate: {{estimateValue}}</h4>
+          <p><a>You have spent: {{amountSpent}}</a></p>
+        </div>
+      </div>
+      <div class="col-md-5"> List of items in chosen category
+        <ul class="collection" ng-repeat="item in items">
+          <li class="collection-item">{{item.name}}<span class="new badge">{{item.price}}</span></li>
+        </ul>
+        <div ng-show="addItemField">
+          <input type="text" placeholder="Item" ng-model="item"> <input type="text" placeholder="Price" ng-model="price">
+          <button ng-click="addItem()">Add</button>
+        </div>
+      <button class="waves-effect waves-light btn" ng-click="addMoreItems()">Add more items</button>
+      </div>
+    </div>
+  </div>
 </div>

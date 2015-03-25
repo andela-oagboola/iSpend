@@ -38,3 +38,9 @@ body {
 #mySidenav {
   overflow: auto;
 }
+#prefs {
+  background-color: blue;
+}
+#jumboBox {
+  margin-left: -150px;
+}

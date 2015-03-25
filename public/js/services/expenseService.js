@@ -9,15 +9,13 @@ expenseService.factory("budget", function($http) {
     },
 
     getUserBudget: function(userId) {
-      return $http.get('/budgets/'+userId)
+      return $http.get('/budgets/' + userId);
     },
-    getItems: function(userId) {
-      return $http.get('/users/categories/:userId');
+    getItems: function(budgetId) {
+      return $http.get('/items/' + budgetId);
     },
-    // addToUser: function(budget, userId) {
-    //   console.log(budget);
-    //   // var userId = budget._id;
-    //   return $http.post('/users/' + userId + '/new-budget', {budget: budget._id});
-    // }
+    addItem: function(item) {
+      return $http.post('/item/newitem', item);
+    }
   };
 });

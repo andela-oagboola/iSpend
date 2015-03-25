@@ -27,6 +27,8 @@ module.exports = function(app) {
 
   app.get('/items', Item.getAllItems);
 
+  app.get('/items/:budgetId', Item.getItemByBudget);
+
   app.post('/login', users.login);
 
   app.get('/logout', users.logout); 

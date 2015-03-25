@@ -2,18 +2,16 @@ var expense = angular.module("expense", []);
 
 expense.controller('expenseCntrl', ['$scope', '$rootScope', 'budget', 'User', '$timeout', function($scope, $rootScope, budget, User, $timeout){
   $scope.user = $rootScope.user;
-  // User.getUserDetails().success(function(data) {
-  //   $scope.user_id = data[0]._id;
-  //   console.log($scope.user_id);
-  // });
+  $scope.amountSpent = 0;
+  console.log($scope.user);
   budget.getUserBudget($scope.user._id).success(function(data) {
     console.log(data);
     $scope.categories = data;
   });
-  $scope.newCategory = true;
+  // $scope.newCategory = true;
   $scope.createCategory = function() {
+    $budgetSummary = false;
     $scope.newbudget = true;
-    $scope.newCategory = false;
   };
   $scope.addCategory = function() {
     console.log($scope.user);
@@ -33,8 +31,41 @@ expense.controller('expenseCntrl', ['$scope', '$rootScope', 'budget', 'User', '$
     });
   };
   $scope.viewCatgeory = function(index) {
-    console.log("clicked");
-    $scope.user_id = $scope.categories[index].user_id;
-    budget.getItems($scope.user_id).success(function () {});
+    $scope.budget = $scope.categories[index];
+    $scope.estimateValue = $scope.budget.estimate;
+    $scope.newbudget = false;
+    $scope.budgetSummary = true;
+    budget.getItems($scope.budget._id).success(function (result) {
+      console.log(result);
+      $scope.items = result;
+      $scope.amountSpent = 0;
+      angular.forEach($scope.items, function(item) {
+        $scope.amountSpent += item.price;
+      });
+    });
+  };
+
+  $scope.addMoreItems = function() {
+    $scope.addItemField= true;
+  };
+
+  $scope.addItem = function() {
+    $scope.addItemField = false;
+    $scope.newItem = {
+      name: $scope.item,
+      price: $scope.price,
+      budget: $scope.budget._id
+    };
+    budget.addItem($scope.newItem).success(function (res) {
+      console.log(res);
+      $scope.items.push({name: $scope.item, price: $scope.price});
+    }).error(function(err) {
+      console.log(err);
+    });
   };
 }]);
+
+
+
+
+

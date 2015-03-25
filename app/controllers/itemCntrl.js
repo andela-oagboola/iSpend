@@ -20,8 +20,14 @@ module.exports = {
     });
   },
 
-  getItemByCategory: function(req, res) {
-    Item.findById("");
+  getItemByBudget: function(req, res) {
+    console.log(req);
+    Items.find({budget: req.params.budgetId}, function(err, items) {
+      if(err) {
+        res.json(err);
+      }
+      res.json(items);
+    });
   },
 
   deleteItem: function(req, res) {
