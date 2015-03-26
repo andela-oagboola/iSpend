@@ -1,6 +1,10 @@
 <div class="row container-fluid">
   <div class="col-md-4">
-    <div class="row" >List of Categories</div>
+    <div class="row" >
+      <div class="col-md-8 bg-success text-center">
+        <span><h5>List of Categories</h5></span>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-8" id="categoryList">
         <ul class="collection" ng-repeat="category in categories">
@@ -25,19 +29,22 @@
     <div class="row container-fluid" ng-show="budgetSummary">
       <div class="col-md-5">
         <div class="jumbotron" id="jumboBox">
-          <h4>Estimate for {{clickedCategory}}: <br> {{estimateValue}}</h4>
+          <h4>Estimate for {{clickedCategory}} : <br> {{estimateValue}}</h4>
         </div>
         <div class="jumbotron" id="jumboBox">
           <h4>Summary</h4>
-          <p><a>You have spent a total of: {{amountSpent}}</a></p>
-          <p><a>You have spent: {{amountSpent}}</a></p>
+          <p>You have spent a total of : {{amountSpent}}</p>
+          <p ng-show="more">You spent {{absoluteValue}} more than your estimate</p>
+          <p ng-show="less">You spent {{absoluteValue}} less than your estimate</p>
+          <p ng-show="none">You have not spent any amount on this category </p>
+          <p ng-show="equal">You spent the same amount as your estimate</p>
         </div>
         <div ng-show="addItemField" style="margin-left: -147px;">
           <input type="text" placeholder="Item" ng-model="item"> <input type="text" placeholder="Price" ng-model="price">
           <button ng-click="addItem()" class="waves-effect waves-light btn">Add</button>
         </div>
       </div>
-      <div class="col-md-5"> List of items in chosen category
+      <div class="col-md-5"> List of items in {{clickedCategory}} category
         <div id="itemsList">
           <ul class="collection" ng-repeat="item in items">
             <a class="collection-item">{{item.name}}<span class="badge">{{item.price}}</span></a>

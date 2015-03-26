@@ -31,6 +31,7 @@ expense.controller('expenseCntrl', ['$scope', '$rootScope', 'budget', 'User', '$
     $scope.displayBudgets();
   };
   $scope.viewCatgeory = function(index) {
+    $scope.absoluteValue = 0;
     $scope.budget = $scope.categories[index];
     $scope.clickedCategory = $scope.categories[index].name;
     $scope.estimateValue = $scope.budget.estimate;
@@ -39,12 +40,43 @@ expense.controller('expenseCntrl', ['$scope', '$rootScope', 'budget', 'User', '$
 
     $scope.displayItems = function() {
       budget.getItems($scope.budget._id).success(function (result) {
-      $scope.items = result;
-      $scope.amountSpent = 0;
-      angular.forEach($scope.items, function(item) {
-        $scope.amountSpent += item.price;
-      });
-    });
+        $scope.items = result;
+        $scope.amountSpent = 0;
+        angular.forEach($scope.items, function(item) {
+          $scope.amountSpent += item.price;
+          $scope.difference = $scope.estimateValue - $scope.amountSpent;
+          console.log("difference ", $scope.difference);
+          console.log("estimate ", $scope.estimateValue);
+          console.log("amountSpent ", $scope.amountSpent);
+          if ($scope.difference < 0) {
+            $scope.absoluteValue = Math.abs($scope.difference);
+            $scope.less = false;
+            $scope.more = true;
+            $scope.none = false;
+            $scope.equal = false;
+          }
+          else if($scope.difference > 0){
+            $scope.absoluteValue = Math.abs($scope.difference);
+            $scope.less = true;
+            $scope.more = false;
+            $scope.none = false;
+            $scope.equal = false;
+          }
+
+          else if($scope.difference === 0) {
+            $scope.less = false;
+            $scope.more = false;
+            $scope.none = false;
+            $scope.equal = true;
+          }
+          else if($scope.amountSpent === 0){
+            $scope.less = false;
+            $scope.more = false;
+            $scope.none = true;
+            $scope.equal = false;
+          }
+        });
+      }); 
     };
     $scope.displayItems();
   };
