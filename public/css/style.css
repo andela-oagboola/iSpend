@@ -44,3 +44,11 @@ body {
 #jumboBox {
   margin-left: -150px;
 }
+
+.strikeMe {
+  text-decoration: line-through;
+}
+
+.items: hover {
+  background-color: #ccc;
+}

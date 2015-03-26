@@ -31,7 +31,7 @@ module.exports = {
   },
 
   deleteItem: function(req, res) {
-    var body = req.params.body;
+    var body = req.body;
     Items.remove({_id: body._id}, function(err, note) {
       if(err) {
         res.json(err);

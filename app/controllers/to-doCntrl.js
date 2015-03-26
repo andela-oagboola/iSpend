@@ -2,7 +2,7 @@ var ToDo = require("../models/to-do");
 
 module.exports = {
   addToDo: function(req, res) {
-    var body = req.params.body;
+    var body = req.body;
     ToDo.create(body, function(err, toDo) {
       if(err) {
         res.json(err);
@@ -25,7 +25,7 @@ module.exports = {
   },
 
   deleteToDo: function(req, res) {
-    var body = req.params.body;
+    var body = req.body;
     ToDo.remove({_id: body._id}, function(err, toDo) {
       if(err) {
         res.json(err);
@@ -33,6 +33,15 @@ module.exports = {
       else {
         res.json(toDo);
       }
+    });
+  },
+
+  getUserToDo: function(req, res) {
+    ToDo.find({user: req.params.userId}, function(err, toDo) {
+      if(err) {
+        res.json(err);
+      }
+      res.json(toDo);
     });
   }
 };

@@ -2331,7 +2331,8 @@ span.badge {
   text-align: center;
   font-size: 1rem;
   line-height: inherit;
-  color: #757575;
+  /*color: #757575;*/
+  color: white;
   float: right;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

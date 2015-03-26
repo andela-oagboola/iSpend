@@ -1,10 +1,7 @@
 var mongoose = require("mongoose");
 var toDoSchema = mongoose.Schema({
   item: {
-    type: String,
-  },
-  title: {
-    type: String,
+    type: String
   },
   status: {
     type: Boolean,
@@ -19,7 +16,7 @@ var toDoSchema = mongoose.Schema({
     default: Date.now
   },
   user: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.ObjectId,
     ref: "Users"
   }
 });

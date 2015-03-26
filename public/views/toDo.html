@@ -7,13 +7,13 @@
           <object id="front-page-logo" type="image/svg+xml"></object>
         </a>
       </li>
-      <li>
+      <!-- <li ng-repeat="todo in ToDos">
         <div class="collection">
-          <a class="collection-item">To Do</a>
+          <a class="collection-item" ng-click="viewToDo($index)">{{todo.title}}</a>
         </div>
-      </li>
+      </li> -->
       <li>
-        <button class="waves-effect waves-light btn">New</button><br>
+        <button class="waves-effect waves-light btn"  ng-click="newTodo()">New item</button><br>
       </li>
       <li>
         <a href="#/"><button class="waves-effect waves-light btn">Home</button></a>
@@ -25,8 +25,17 @@
   </div>
 
   <div class="col-md-8">
-    <div class="collection">
-      <a class="collection-item">Alvin<i class="mdi-content-clear"></i></a>
+
+    <div class="row container-fluid">
+    <!-- <item-striker></item-striker> -->
+      <div class="collection" ng-repeat="todo in toDos">
+       <div class="collection-item" item-striker >{{todo.item}}<span class="badge"><i class="mdi-content-clear"></i></span></div>
+      </div>
+    </div>
+
+    <div class="row container" ng-show="newToDoField">
+      <input type="text" ng-model="toDo" placeholder="To-do Item"/>
+      <button class="waves-effect waves-light btn" ng-click="createToDo()">Add</button>
     </div>
   </div>
 

@@ -2,6 +2,7 @@ var users = require("./controllers/usersCntrl");
 var Budget = require("./controllers/budgetCntrl");
 var Item = require("./controllers/itemCntrl");
 var note = require("./controllers/notesCntrl");
+var toDo = require("./controllers/to-doCntrl");
 
 module.exports = function(app) {
 
@@ -38,6 +39,12 @@ module.exports = function(app) {
   app.get('/notes/:userId', note.getNoteByUser);
 
   app.post('/update/note/:noteId', note.updateNote);
+
+  app.post('/toDo/addTodo', toDo.addToDo);
+
+  app.get('/toDo', toDo.getAllToDo);
+
+  app.get('/toDo/:userId', toDo.getUserToDo);
 
   app.post('/login', users.login);
 

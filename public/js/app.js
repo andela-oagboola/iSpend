@@ -5,6 +5,7 @@ var expenseApp = angular.module("expenseApp", [
   'preference',
   'expense',
   'toDo',
+  'toDoService',
   'note',
   'noteService',
   'nameBroadcast',

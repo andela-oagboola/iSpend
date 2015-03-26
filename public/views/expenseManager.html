@@ -31,7 +31,7 @@
       </div>
       <div class="col-md-5"> List of items in chosen category
         <ul class="collection" ng-repeat="item in items">
-          <a class="collection-item">{{item.name}}<span class="new badge">{{item.price}}</span></a>
+          <a class="collection-item">{{item.name}}<span class="badge">{{item.price}}</span></a>
         </ul>
         <div ng-show="addItemField">
           <input type="text" placeholder="Item" ng-model="item"> <input type="text" placeholder="Price" ng-model="price">
