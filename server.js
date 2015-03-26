@@ -8,13 +8,13 @@ var passport = require('passport');
 var routes = require("./app/route");
 var app = express();
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'development';
 
 var port = process.env.PORT || 8001;
 if(env === 'development') {
   mongoose.connect(db.developmentUrl);
 }
-else {
+else if( env === 'production' ) {
   mongoose.connect(db.productionUrl);
 }
 
