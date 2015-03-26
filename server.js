@@ -10,6 +10,7 @@ var app = express();
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+var port = process.env.PORT || 8001;
 if(env === 'development') {
   mongoose.connect(db.developmentUrl);
 }
@@ -46,6 +47,6 @@ require('./config/passport')();
 routes(app);
 
 
-app.listen(8001, function() {
+app.listen(port, function() {
   console.log("server started");
 });
