@@ -1,20 +1,20 @@
 <div class="row container-fluid">
   <div class="col-md-4">
-    <ul class="side-nav fixed" style="width: 350px;">
-      <li class="logo">
-        <a href="" id="logo-container" class="brand-logo" id="mySidenav">
-            <object id="front-page-logo" type="image/svg+xml"></object>
-        </a>
-      </li>
-      <li ng-repeat="category in categories">
-        <div class="collection">
-        <a class="collection-item" ng-click="viewCatgeory($index)">{{category.name}}</a>
+    <div class="row" >List of Categories</div>
+    <div class="row">
+      <div class="col-md-8" id="categoryList">
+        <ul class="collection" ng-repeat="category in categories">
+          <a class="collection-item" ng-click="viewCatgeory($index)">{{category.name}}</a>
+        </ul>
       </div>
-      </li>
-      <button ng-click="createCategory()" class="waves-effect waves-light btn">New Category</button><br>
-      <a href="#/"><button class="waves-effect waves-light btn">Home</button></a>
-      <a href="#/users/preference"><button class="waves-effect waves-light btn">BACK</button></a>
-    </ul>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <button ng-click="createCategory()" class="waves-effect waves-light btn">New Category</button><br>
+        <a href="#/"><button class="waves-effect waves-light btn">Home</button></a>
+        <a href="#/users/preference"><button class="waves-effect waves-light btn">BACK</button></a>
+      </div>
+    </div>
   </div>
   <div class="col-md-8">
     <div class="row container" ng-show="newbudget">
@@ -25,19 +25,25 @@
     <div class="row container-fluid" ng-show="budgetSummary">
       <div class="col-md-5">
         <div class="jumbotron" id="jumboBox">
-          <h4>Estimate: {{estimateValue}}</h4>
+          <h4>Estimate for {{clickedCategory}}: <br> {{estimateValue}}</h4>
+        </div>
+        <div class="jumbotron" id="jumboBox">
+          <h4>Summary</h4>
+          <p><a>You have spent a total of: {{amountSpent}}</a></p>
           <p><a>You have spent: {{amountSpent}}</a></p>
         </div>
-      </div>
-      <div class="col-md-5"> List of items in chosen category
-        <ul class="collection" ng-repeat="item in items">
-          <a class="collection-item">{{item.name}}<span class="badge">{{item.price}}</span></a>
-        </ul>
-        <div ng-show="addItemField">
+        <div ng-show="addItemField" style="margin-left: -147px;">
           <input type="text" placeholder="Item" ng-model="item"> <input type="text" placeholder="Price" ng-model="price">
           <button ng-click="addItem()" class="waves-effect waves-light btn">Add</button>
         </div>
-      <button class="waves-effect waves-light btn" ng-click="addMoreItems()">Add more items</button>
+      </div>
+      <div class="col-md-5"> List of items in chosen category
+        <div id="itemsList">
+          <ul class="collection" ng-repeat="item in items">
+            <a class="collection-item">{{item.name}}<span class="badge">{{item.price}}</span></a>
+          </ul>
+        </div>
+        <button class="waves-effect waves-light btn" ng-click="addMoreItems()">Add more items</button>
       </div>
     </div>
   </div>

@@ -1,41 +1,28 @@
 <div class="container-fluid">
 
   <div class="col-md-4">
-    <ul class="side-nav fixed" style="width: 350px;">
-      <li class="logo">
-        <a href="" id="logo-container" class="brand-logo" id="mySidenav">
-          <object id="front-page-logo" type="image/svg+xml"></object>
-        </a>
-      </li>
-      <!-- <li ng-repeat="todo in ToDos">
-        <div class="collection">
-          <a class="collection-item" ng-click="viewToDo($index)">{{todo.title}}</a>
-        </div>
-      </li> -->
-      <li>
-        <button class="waves-effect waves-light btn"  ng-click="newTodo()">New item</button><br>
-      </li>
-      <li>
-        <a href="#/"><button class="waves-effect waves-light btn">Home</button></a>
-      </li>
-      <li>
-        <a href="#/users/preference"><button class="waves-effect waves-light btn">BACK</button></a>
-      </li>
-    </ul>
+    <div class="row">
+      <div class="col-md-8" id="todoOptions"> Options
+        <ul class="collection">
+          <a class="collection-item"><button class="waves-effect waves-light btn"  ng-click="newTodo()">New item</button><br></a>
+          <a class="collection-item" href="#/"><button class="waves-effect waves-light btn">Home</button></a>
+          <a class="collection-item" href="#/users/preference"><button class="waves-effect waves-light btn">BACK</button></a>
+        </ul>
+      </div>
+    </div>
+    <div class="row" ng-show="newToDoField">
+      <div class="col-md-8">
+        <input type="text" ng-model="toDo" placeholder="To-do Item"/>
+        <button class="waves-effect waves-light btn" ng-click="createToDo()">Add</button>
+      </div>
+    </div>
   </div>
 
-  <div class="col-md-8">
-
+  <div class="col-md-8" id="toDoList">
     <div class="row container-fluid">
-    <!-- <item-striker></item-striker> -->
       <div class="collection" ng-repeat="todo in toDos">
        <div class="collection-item" item-striker >{{todo.item}}<span class="badge"><i class="mdi-content-clear"></i></span></div>
       </div>
-    </div>
-
-    <div class="row container" ng-show="newToDoField">
-      <input type="text" ng-model="toDo" placeholder="To-do Item"/>
-      <button class="waves-effect waves-light btn" ng-click="createToDo()">Add</button>
     </div>
   </div>
 

@@ -32,6 +32,7 @@ expense.controller('expenseCntrl', ['$scope', '$rootScope', 'budget', 'User', '$
   };
   $scope.viewCatgeory = function(index) {
     $scope.budget = $scope.categories[index];
+    $scope.clickedCategory = $scope.categories[index].name;
     $scope.estimateValue = $scope.budget.estimate;
     $scope.newbudget = false;
     $scope.budgetSummary = true;
