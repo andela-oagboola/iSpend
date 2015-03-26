@@ -8,7 +8,15 @@ var passport = require('passport');
 var routes = require("./app/route");
 var app = express();
 
-mongoose.connect(db.url);
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+if(env === 'development') {
+  mongoose.connect(db.developmentUrl);
+}
+else {
+  mongoose.connect(db.productionUrl);
+}
+
 // var dba = mongoose.connection;
 // dba.on('error', console.error.bind(console, "error leleyi"));
 // dba.once('open', function callback() {
