@@ -46,6 +46,8 @@ module.exports = function(app) {
 
   app.get('/toDo/:userId', toDo.getUserToDo);
 
+  app.post('/toDo/delete/:itemId', toDo.deleteToDo);
+
   app.post('/login', users.login);
 
   app.get('/logout', users.logout); 

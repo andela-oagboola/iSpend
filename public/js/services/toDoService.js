@@ -6,6 +6,9 @@ toDoService.factory('toDo', ['$http', function($http){
     },
     getToDo: function(userId) {
       return $http.get('/toDo/' + userId);
+    },
+    delete: function(itemId) {
+      return $http.post('/toDo/delete/' + itemId);
     }
   };
 }]);

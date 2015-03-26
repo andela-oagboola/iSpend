@@ -30,7 +30,7 @@ body {
 }
 #itemsList {
   overflow: auto;
-  max-height: 635px;
+  max-height: 550px;
 }
 #todoOptions {
   /*border-right: 2px solid green;*/
@@ -58,13 +58,13 @@ a: hover {
 #toDoList {
   max-height: 650px;
   overflow: auto;
-  margin-left: -100px;
+  /*margin-left: -100px;*/
 }
 #prefs {
   background-color: blue;
 }
 #jumboBox {
-  margin-left: -150px;
+  /*margin-left: -150px;*/
 }
 
 .strikeMe {

@@ -31,6 +31,16 @@ toDo.controller('toDoCntrl', ['$scope', 'toDo', '$rootScope', function($scope, t
   $scope.strikeMe = function(index) {
     $scope.selectedIndex = index;
   };
+
+  $scope.deleteItem = function(index) {
+    $scope.itemToBeDeleted = $scope.toDos[index]._id;
+    toDo.delete($scope.itemToBeDeleted).success(function(res) {
+      console.log(res);
+    }).error(function(err) {
+      console.log(err);
+    });
+    $scope.displayToDo();
+  };
 }]);
 
 toDo.directive('itemStriker', function() {
