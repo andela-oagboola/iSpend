@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-md-8" id="categoryList">
         <ul class="collection" ng-repeat="note in retrievedNotes">
-          <a class="collection-item" ng-click="viewNote($index)">{{note.title}}</a>
+          <a class="collection-item" ng-click="viewNote($index)">{{note.title}}</a><span class="badge"><i class="mdi-content-clear" ng-click="deleteNote($index)"></i></span>
         </ul>
       </div>
     </div>

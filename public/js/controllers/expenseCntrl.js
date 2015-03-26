@@ -30,6 +30,10 @@ expense.controller('expenseCntrl', ['$scope', '$rootScope', 'budget', 'User', '$
       console.log(err);
     });
     $scope.displayBudgets();
+
+    $scope.category = "";
+    $scope.estimate = "";
+
   };
   $scope.viewCatgeory = function(index) {
     $scope.absoluteValue = 0;
@@ -115,5 +119,8 @@ expense.controller('expenseCntrl', ['$scope', '$rootScope', 'budget', 'User', '$
       console.log(err);
     });
     $scope.displayItems();
+
+    $scope.item = "";
+    $scope.price = "";
   };
 }]);

@@ -26,6 +26,7 @@ toDo.controller('toDoCntrl', ['$scope', 'toDo', '$rootScope', function($scope, t
     });
     $scope.newToDoField = false;
     $scope.displayToDo();
+    $scope.toDo = "";
   };
 
   $scope.strikeMe = function(index) {

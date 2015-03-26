@@ -26,6 +26,8 @@ note.controller('noteCntrl', ['$scope', 'notes', '$rootScope', function($scope, 
       console.log(err);
     });
     $scope.displayNotes();
+    $scope.newTitle = "";
+    $scope.newNote = "";
   };
   $scope.updateNote = function() {
     $scope.existingNoteField = false;
@@ -47,5 +49,15 @@ note.controller('noteCntrl', ['$scope', 'notes', '$rootScope', function($scope, 
     $scope.existingNote = $scope.selectedNote.content;
     $scope.existingNoteField = true;
     $scope.newNoteField = false;
+  };
+
+  $scope.deleteNote = function(index) {
+    $scope.noteToBeDeleted = $scope.retrievedNotes[index]._id;
+    notes.deleteNote($scope.noteToBeDeleted).success(function(result) {
+      console.log(result);
+    }).error(function(err) {
+      console.log(err);
+    });
+    $scope.displayNotes();
   };
 }]);

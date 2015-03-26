@@ -1,6 +1,7 @@
 var express = require("express");
 var mongoose = require("mongoose");
 var bodyParser     = require('body-parser');
+var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var logger = require('morgan');
 var db = require("./config/db");
@@ -23,9 +24,12 @@ else if( env === 'production' ) {
 // dba.once('open', function callback() {
 //   console.log("we connected ");
 // });
+app.use(cookieParser());
 
 app.use(logger('dev'));
+
 app.use(bodyParser.json());
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 

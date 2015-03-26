@@ -38,6 +38,8 @@ module.exports = function(app) {
 
   app.get('/notes/:userId', note.getNoteByUser);
 
+  app.post('/note/delete/:noteId', note.deleteNote);
+
   app.post('/update/note/:noteId', note.updateNote);
 
   app.post('/toDo/addTodo', toDo.addToDo);

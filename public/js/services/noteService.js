@@ -9,6 +9,9 @@ noteService.factory('notes', ['$http', function($http) {
     },
     updateNote: function(note, noteId) {
       return $http.post('/update/note/' + noteId, note);
+    },
+    deleteNote: function(noteId) {
+      return $http.post('/note/delete/' + noteId);
     }
   };
 }]);

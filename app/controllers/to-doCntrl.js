@@ -25,7 +25,6 @@ module.exports = {
   },
 
   deleteToDo: function(req, res) {
-    // var body = req.body;
     ToDo.remove({_id: req.params.itemId}, function(err, toDo) {
       if(err) {
         res.json(err);

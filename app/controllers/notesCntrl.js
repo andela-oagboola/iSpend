@@ -15,8 +15,7 @@ module.exports = {
   },
 
   deleteNote: function(req, res) {
-    var body = req.body;
-    Notes.remove({_id: body._id}, function(err, note) {
+    Notes.remove({_id: req.params.noteId}, function(err, note) {
       if(err) {
         res.json(err);
       }
