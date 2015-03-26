@@ -11,17 +11,18 @@
       </div>
     </div>
     <div class="row" ng-show="newToDoField">
-      <div class="col-md-8">
-        <input type="text" ng-model="toDo" placeholder="To-do Item"/>
-        <button class="waves-effect waves-light btn" ng-click="createToDo()">Add</button>
+    <div class="col-md-8">
+      <input type="text" ng-model="toDo" placeholder="To-do Item"/>
+      <button class="waves-effect waves-light btn" ng-click="createToDo()">Add</button>
       </div>
     </div>
   </div>
-
-  <div class="col-md-8" id="toDoList">
-    <div class="row container-fluid">
-      <div class="collection" ng-repeat="todo in toDos">
-       <div class="collection-item" item-striker >{{todo.item}}<span class="badge"><i class="mdi-content-clear"></i></span></div>
+  
+    <div class="col-md-8" id="toDoList">
+      <div class="row container-fluid">
+        <div class="collection" ng-repeat="todo in toDos">
+         <div class="collection-item" item-striker >{{todo.item}}<span class="badge"><i class="mdi-content-clear"></i></span></div>
+        </div>
       </div>
     </div>
   </div>
