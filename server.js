@@ -7,7 +7,7 @@ var logger = require('morgan');
 var db = require("./config/db");
 var passport = require('passport');
 var routes = require("./app/route");
-var mongoStore = require('connect-mongo')({session: session});
+// var mongoStore = require('connect-mongo')({session: session});
 var app = express();
 
 var env = process.env.NODE_ENV || 'development';
@@ -39,10 +39,10 @@ app.use(express.static(__dirname + '/public'));
 app.use(session({
   secret:'ispend',
   resave: true,
-  saveUninitialized: true,
-  store: new mongoStore({
-    url: db.developmentUrl
-  })
+  saveUninitialized: true
+  // store: new mongoStore({
+  //   url: db.developmentUrl
+  // })
 }));
 
 
