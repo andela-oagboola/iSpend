@@ -11,7 +11,6 @@ main.controller('MainCntrl', ['$scope', 'getResource', 'Data', '$rootScope', '$l
       password: $scope.password
     };
     getResource.verifyUser($scope.details).success(function (data) {
-      console.log(data);
       $rootScope.user = data;
       $scope.currentUser = data;
       $rootScope.username = data.username;

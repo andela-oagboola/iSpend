@@ -91,5 +91,8 @@ module.exports = {
       return;
     }
     next();
+  },
+  isLoggedIn: function(req, res) {
+    res.json(req.user);
   }
 };

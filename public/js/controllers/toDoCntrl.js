@@ -4,7 +4,6 @@ toDo.controller('toDoCntrl', ['$scope', 'toDo', '$rootScope', function($scope, t
 
   $scope.displayToDo = function() {
     toDo.getToDo($scope.user._id).success(function(result) {
-    console.log(result);
     $scope.toDos = result;
     }).error(function(err) {
       console.log(err);
@@ -20,7 +19,6 @@ toDo.controller('toDoCntrl', ['$scope', 'toDo', '$rootScope', function($scope, t
       user: $scope.user._id
     };
     toDo.addToDo($scope.myToDo).success(function(result) {
-      console.log(result);
     }).error(function(err) {
       console.log(err);
     });
@@ -36,7 +34,6 @@ toDo.controller('toDoCntrl', ['$scope', 'toDo', '$rootScope', function($scope, t
   $scope.deleteItem = function(index) {
     $scope.itemToBeDeleted = $scope.toDos[index]._id;
     toDo.delete($scope.itemToBeDeleted).success(function(res) {
-      console.log(res);
     }).error(function(err) {
       console.log(err);
     });

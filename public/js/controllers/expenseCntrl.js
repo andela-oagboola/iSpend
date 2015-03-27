@@ -25,7 +25,6 @@ expense.controller('expenseCntrl', ['$scope', '$rootScope', 'budget', 'User', '$
     };
   
     budget.newBudget($scope.budget).success(function(data) {
-      console.log(data);
     }).error(function(err) {
       console.log(err);
     });
@@ -114,12 +113,10 @@ expense.controller('expenseCntrl', ['$scope', '$rootScope', 'budget', 'User', '$
       budget: $scope.budget._id
     };
     budget.addItem($scope.newItem).success(function (res) {
-      console.log(res);
     }).error(function(err) {
       console.log(err);
     });
     $scope.displayItems();
-
     $scope.item = "";
     $scope.price = "";
   };

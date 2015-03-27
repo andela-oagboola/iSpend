@@ -5,7 +5,6 @@ note.controller('noteCntrl', ['$scope', 'notes', '$rootScope', function($scope, 
   $scope.displayNotes = function() {
     notes.getNotes($scope.user._id).success(function(result) {
       $scope.retrievedNotes = result;
-      console.log(result);
     });
   };
   $scope.displayNotes();
@@ -21,7 +20,6 @@ note.controller('noteCntrl', ['$scope', 'notes', '$rootScope', function($scope, 
       user: $scope.user._id
     };
     notes.createNote($scope.note).success(function(result) {
-      console.log(result);
     }).error(function(err) {
       console.log(err);
     });
@@ -37,7 +35,6 @@ note.controller('noteCntrl', ['$scope', 'notes', '$rootScope', function($scope, 
       content: $scope.existingNote
     };
     notes.updateNote($scope.note, $scope.selectedNote._id).success(function(res) {
-      console.log(res);
     }).error(function(err) {
       console.log(err);
     });
@@ -54,7 +51,6 @@ note.controller('noteCntrl', ['$scope', 'notes', '$rootScope', function($scope, 
   $scope.deleteNote = function(index) {
     $scope.noteToBeDeleted = $scope.retrievedNotes[index]._id;
     notes.deleteNote($scope.noteToBeDeleted).success(function(result) {
-      console.log(result);
     }).error(function(err) {
       console.log(err);
     });

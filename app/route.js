@@ -52,5 +52,7 @@ module.exports = function(app) {
 
   app.post('/login', users.login);
 
+  app.get('/isLoggedIn', users.isLoggedIn);
+
   app.get('/logout', users.logout); 
 };
