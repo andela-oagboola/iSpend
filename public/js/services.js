@@ -9,12 +9,12 @@ services.factory('getResource', ['$http', '$cookies', function($http, $cookies){
     },
     currentUser: function(user) {
       return user;
-    },
-    setCookies: function (user) {
-      $cookies.put('loggedInUser', user);
-      var presentUser = $cookies.get('loggedInUser');
-      return presentUser;
     }
+    // setCookies: function (user) {
+    //   $cookies.put('loggedInUser', user);
+    //   var presentUser = $cookies.get('loggedInUser');
+    //   return presentUser;
+    // }
   };
   
 }]);

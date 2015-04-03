@@ -7,11 +7,20 @@
     "body-parser": "~1.4.2",
     "express": "~4.5.1",
     "express-session": "^1.10.4",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.5",
     "method-override": "~2.0.2",
     "mongoose": "~3.8.0",
     "morgan": "^1.5.2",
     "passport": "^0.2.1",
     "passport-local": "^1.0.0"
+  },
+  "scripts": {
+    "update-webdriver": "webdriver-manager update",
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor test/protractor-conf.js"
   },
   "repository": {
     "type": "git",

@@ -1,13 +1,8 @@
 <div class="jumbotron" id="content">
-  <!-- <div class="container">
-    <h2 class="text-left">Manage your money</h2>
-  </div> -->
-  
   <div id="homeMessage">
     <span style="font-size: 30px;">Welcome to the <br> iSpend Expense Manager</span><br><br>
-    <span style="font-size: 20px;">Manage your money.......manage your life</span>
+    <span style="font-size: 20px;">Manage your money.......manage your life ₦</span>
   </div>
-  <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p> -->
 </div>
 <div class="container-fluid row">
   <div class="col-md-12" id="login">
@@ -15,10 +10,14 @@
       <div id="inputArea">
         <input type="text" name="username" ng-model="username" placeholder="Username"/> <br><br>
         <input type="password" name="password" ng-model="password" placeholder="password"/><br><br>
-        <button class="waves-effect waves-light btn" ng-click="login()">Login</button><br><br>
-        <p>New User?</p>
+        <button class="waves-effect waves-light btn" ng-click="login()" id="loginBtn">Login</button><br><br>
+        <!-- <p>New User?</p><a href="#/users/preference">jjdj</a> -->
         <a href="#/signUp"><button class="waves-effect waves-light btn">SignUp</button></a>
       </div>
+    </div>
+    <div class="col-md-4">
+      <div ng-show="wrongDetails" id="wrongDetails" style="color: red;">Username or password incorrect</div>
+      <div ng-show="emptyDetails" id="emptyDetails" style="color: red;">Please enter a valid username and password</div>
     </div>
   </div>
 </div>

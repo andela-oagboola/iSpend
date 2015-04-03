@@ -1,4 +1,5 @@
 <div class="row container-fluid">
+
   <div class="col-md-4">
     <div class="row" >
       <div class="col-md-12 bg-success text-center">
@@ -7,8 +8,10 @@
     </div>
     <div class="row">
       <div class="col-md-12" id="categoryList">
-        <ul class="collection" ng-repeat="category in categories">
-          <a class="collection-item" ng-click="viewCatgeory($index)">{{category.name}}</a>
+        <ul class="collection" ng-repeat="category in categories | orderBy: '-timeCreated' ">
+          <a class="collection-item" ng-click="viewCatgeory($index)">{{category.name}}
+            <span style="color: black;">{{category.createdAt | date:'medium' }}</span>
+          </a>
         </ul>
       </div>
     </div>
@@ -26,7 +29,7 @@
     <div class="row" ng-show="budgetSummary">
       <div class="col-md-12">
         <div class="jumbotron" id="jumboBox">
-          <h5>Estimate for {{clickedCategory}} : <br> {{estimateValue}}</h5>
+          <h5>Estimate for {{clickedCategory}} : <br> {{estimateValue | currency: custom}}</h5>
         </div>
       </div>
     </div>
@@ -35,9 +38,9 @@
       <div class="col-md-12">
         <div class="jumbotron" id="jumboBox">
           <h5>Summary</h5>
-          <p>You have spent a total of : {{amountSpent}}</p>
-          <p ng-show="more">You spent {{absoluteValue}} more than your estimate</p>
-          <p ng-show="less">You spent {{absoluteValue}} less than your estimate</p>
+          <p >You have spent a total of : {{amountSpent | currency: custom}}</p>
+          <p ng-show="more" style="color:red;">You spent {{absoluteValue | currency: custom}} more than your estimate</p>
+          <p ng-show="less" style="color:green;">You spent {{absoluteValue | currency: custom}} less than your estimate</p>
           <p ng-show="none">You have not spent any amount on this category </p>
           <p ng-show="equal">You spent the same amount as your estimate</p>
         </div>
@@ -62,6 +65,7 @@
   </div>
 
   <div class="col-md-4" ng-show="itemsColumn">
+
     <div class="row">
       <div class="col-md-12 bg-success text-center">
         <span><h5>List of items in {{clickedCategory}} category</h5></span>
@@ -72,7 +76,7 @@
       <div class="col-md-12">
         <div id="itemsList">
             <ul class="collection" ng-repeat="item in items">
-              <a class="collection-item">{{item.name}}<span class="badge">{{item.price}}</span></a>
+              <a class="collection-item">{{item.name}}<span class="badge">{{item.price | currency: '₦'}}</span></a>
             </ul>
           </div>
       </div>
@@ -83,5 +87,6 @@
         <button class="waves-effect waves-light btn" ng-click="addMoreItems()">Add more items</button>
       </div>
     </div>
+
   </div>
 </div>

@@ -1,7 +1,7 @@
 var note = angular.module("note", []);
 note.controller('noteCntrl', ['$scope', 'notes', '$rootScope', function($scope, notes, $rootScope){
   $scope.user = $rootScope.user;
-
+  $scope.readonly = true;
   $scope.displayNotes = function() {
     notes.getNotes($scope.user._id).success(function(result) {
       $scope.retrievedNotes = result;
@@ -49,11 +49,21 @@ note.controller('noteCntrl', ['$scope', 'notes', '$rootScope', function($scope, 
   };
 
   $scope.deleteNote = function(index) {
-    $scope.noteToBeDeleted = $scope.retrievedNotes[index]._id;
-    notes.deleteNote($scope.noteToBeDeleted).success(function(result) {
+    $scope.confirmation = confirm("Do you really want to trash this note?");
+    if($scope.confirmation  === true) {
+      $scope.noteToBeDeleted = $scope.retrievedNotes[index]._id;
+      notes.deleteNote($scope.noteToBeDeleted).success(function(result) {
+      $scope.displayNotes();
+      $scope.existingNoteField = false;
+      alert("Note deleted");
     }).error(function(err) {
       console.log(err);
     });
     $scope.displayNotes();
+    } 
+  };
+
+  $scope.editNote = function() {
+    $scope.readonly = false;
   };
 }]);

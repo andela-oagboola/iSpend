@@ -9,7 +9,10 @@
     <div class="row">
       <div class="col-md-8" id="categoryList">
         <ul class="collection" ng-repeat="note in retrievedNotes">
-          <a class="collection-item" ng-click="viewNote($index)">{{note.title}}</a><span class="badge"><i class="mdi-content-clear" ng-click="deleteNote($index)"></i></span>
+          <a class="collection-item" ng-click="viewNote($index)">{{note.title}}</a>
+          <span class="badge" style="background-color:red;" ng-click="deleteNote($index)">
+            <i class="mdi-content-clear"></i>
+          </span>
         </ul>
       </div>
     </div>
@@ -29,8 +32,9 @@
       <button class="waves-effect waves-light btn" ng-click="createNote()">Add New Note</button>
     </div>
     <div class="input-field" ng-show="existingNoteField">
-      <input type="text" placeholder="Title" ng-model="existingTitle">
-      <textarea id="textarea2" class="materialize-textarea" ng-model="existingNote"placeholder="Your note"></textarea>
+      <input type="text" placeholder="Title" ng-model="existingTitle" ng-readonly="readonly">
+      <textarea id="textarea2" class="materialize-textarea" ng-model="existingNote"placeholder="Your note" ng-readonly="editable"></textarea>
+      <button class="waves-effect waves-light btn" ng-click="editNote()">Edit</button>
       <button class="waves-effect waves-light btn" ng-click="updateNote()">Done</button>
     </div>
   </div>

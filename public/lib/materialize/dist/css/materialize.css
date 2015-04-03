@@ -1696,7 +1696,10 @@ a {
  * Improve readability when focused and also mouse hovered in all browsers.
  */
 a:active, a:hover {
-  outline: 0; }
+  outline: 0; 
+  cursor: pointer;
+  text-decoration: none;
+}
 
 /* Text-level semantics
    ========================================================================== */

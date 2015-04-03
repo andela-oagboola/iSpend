@@ -1,12 +1,15 @@
 var expense = angular.module("expense", []);
 
-expense.controller('expenseCntrl', ['$scope', '$rootScope', 'budget', 'User', '$timeout', 'getResource',function($scope, $rootScope, budget, User, $timeout, getResource){
+expense.controller('expenseCntrl', ['$scope', '$rootScope', 'budget', 'User', '$timeout', 'getResource', function($scope, $rootScope, budget, User, $timeout, getResource){
   $scope.user = $rootScope.user;
   $scope.amountSpent = 0;
+  $scope.custom = "₦";
 
   $scope.displayBudgets = function() {
     budget.getUserBudget($scope.user._id).success(function(data) {
     $scope.categories = data;
+    $scope.timeCreated = data.createdAt;
+    console.log(data);
   });
   };
   $scope.displayBudgets();

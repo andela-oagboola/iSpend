@@ -45,6 +45,7 @@ body {
 }
 a: hover {
   text-decoration: none;
+  cursor: pointer;
 }
 #itemList: hover {
   background-color: #ccc;
@@ -58,7 +59,7 @@ a: hover {
   margin-bottom: 32px;
 }
 #categoryList{
-  max-height: 550px;
+  max-height: 400px;
   overflow: auto;
   border-right: 2px solid green;
 }
