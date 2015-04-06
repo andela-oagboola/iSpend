@@ -1,15 +1,18 @@
 var main = angular.module("main", []);
 
 main.controller('MainCntrl', ['$scope', 'getResource', 'Data', '$location', '$window', function($scope, getResource, Data, $location, $window) {
-  console.log(getResource.loggedInUser);
-  $scope.currentUser = getResource.loggedInUser;
+  console.log("getResource.loggedInUser");
+  $scope.currentUser = getResource.loggedInUser();
+  console.log($scope.currentUser);
   if ($scope.currentUser) {
     // $rootScope.user = JSON.parse($window.sessionStorage.currUser);
     // $scope.currentUser = $scope.currentUser;
     $location.path('/users/preference');
+    return;
   }
   $scope.welcome = "";
   $scope.login = function() {
+    console.log("clicked");
     $scope.wrongDetails = true;
     $scope.welcome = "Signed in as " + $scope.username;
     $scope.details = {

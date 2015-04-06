@@ -1,6 +1,6 @@
 var toDo = angular.module("toDo", []);
 toDo.controller('toDoCntrl', ['$scope', 'toDo', 'getResource', function($scope, toDo, getResource){
-  $scope.user = getResource.loggedInUser;
+  $scope.user = getResource.loggedInUser();
   $scope.noToDo = false;
 
   $scope.displayToDo = function() {

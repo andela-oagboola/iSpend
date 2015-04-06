@@ -1,6 +1,6 @@
 var note = angular.module("note", []);
 note.controller('noteCntrl', ['$scope', 'notes', 'getResource', function($scope, notes, getResource){
-  $scope.user = getResource.loggedInUser;
+  $scope.user = getResource.loggedInUser();
   $scope.readonly = true;
   $scope.noNote = false;
   $scope.displayNotes = function() {

@@ -1,7 +1,7 @@
 var expense = angular.module("expense", []);
 
 expense.controller('expenseCntrl', ['$scope', 'budget', 'User', '$timeout', 'getResource', function($scope, budget, User, $timeout, getResource){
-  $scope.currentUser = getResource.loggedInUser;
+  $scope.currentUser = getResource.loggedInUser();
   $scope.noCategory = false;
   $scope.noItems = false;
   $scope.user = $scope.currentUser;

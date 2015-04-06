@@ -1,6 +1,7 @@
 var services = angular.module("expenseApp");
 services.factory('getResource', ['$http', '$cookies', '$window', function($http, $cookies, $window){
   // console.log($window.sessionStorage.currUser);
+
   return {
     verifyUser: function (details) {
        return $http.post('/login', details);
@@ -11,6 +12,11 @@ services.factory('getResource', ['$http', '$cookies', '$window', function($http,
     currentUser: function(user) {
       return user;
     },
-    loggedInUser : JSON.parse($window.sessionStorage.currUser)
+    loggedInUser: function() {
+      if (!$window.sessionStorage.currUser) {
+        return false;
+      }
+      return JSON.parse($window.sessionStorage.currUser);
+    }
   };
 }]);
