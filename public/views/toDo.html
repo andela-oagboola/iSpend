@@ -28,8 +28,9 @@
   
     <div class="col-md-8" id="toDoList">
       <div class="row container-fluid">
+        <div class="jumbotron" ng-show="noToDo">Nothing to do</div>
         <div class="collection" ng-repeat="todo in toDos">
-         <div class="collection-item" ><span item-striker>{{todo.item}}</span><span class="badge"><i class="mdi-content-clear" ng-click="deleteItem($index)"></i></span></div>
+         <div class="collection-item" ><span item-striker>{{todo.item}}</span><span class="badge" style="background-color:red;"><i class="mdi-content-clear" ng-click="deleteItem($index)"></i></span></div>
         </div>
       </div>
     </div>

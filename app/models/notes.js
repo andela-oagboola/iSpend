@@ -2,9 +2,11 @@ var mongoose = require("mongoose");
 var noteSchema = mongoose.Schema({
   title: {
     type: String,
+    default: Date.now
   },
   content: {
     type: String,
+    default: "No Note added"
   },
   status: {
     deleted: Boolean,

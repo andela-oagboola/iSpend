@@ -3,7 +3,6 @@ var Notes = require("../models/notes");
 module.exports = {
   addNote: function(req, res) {
     var body = req.body;
-    console.log(body);
     Notes.create(body, function(err, note) {
       if(err) {
         res.json(err);
@@ -46,7 +45,6 @@ module.exports = {
   },
 
   getNoteByUser: function(req, res) {
-    console.log("hurray");
     Notes.find({user: req.params.userId}, function(err, notes) {
       if(err) {
         res.json(err);

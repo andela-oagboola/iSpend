@@ -4,7 +4,6 @@ var User = require("../models/users");
 module.exports = {
   addBudget: function(req, res) {
     var body = req.body;
-    console.log("new cat ", body);
     Budget.create(body, function(err, budgets) {
       if (err) {
         res.json(err);
@@ -32,7 +31,8 @@ module.exports = {
   },
 
   getUserBudget: function (req, res) {
-    Budget.find({user: req.user._id}).exec(function (err, budgets) {
+    // console.log(req.params);
+    Budget.find({user: req.params.userId}).exec(function (err, budgets) {
       if (err) {
         res.json(err);
       }
@@ -41,16 +41,16 @@ module.exports = {
   },
 
   deleteBudget: function(req, res) {
-    var body = req.params.body;
-    Items.remove({budget_id: body._id}, function(err, item) {
-      if(err) {
-        res.json(err);
-      }
-      else {
-      res.json(item);
-      }
-    });
-    Budget.remove({_id: body._id}, function(err, budget) {
+    // var body = req.params.;
+    // Items.remove({budget_id: body._id}, function(err, item) {
+    //   if(err) {
+    //     res.json(err);
+    //   }
+    //   else {
+    //   res.json(item);
+    //   }
+    // });
+    Budget.remove({_id: req.params.budgetId}, function(err, budget) {
       if(err) {
         res.json(err);
       }

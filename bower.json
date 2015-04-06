@@ -30,6 +30,7 @@
     "font-awesome": "latest",
     "animate.css": "latest",
     "angular-route": "latest",
-    "materialize": "~0.95.3"
+    "materialize": "~0.95.3",
+    "fontawesome": "~4.3.0"
   }
 }

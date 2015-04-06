@@ -8,10 +8,14 @@
     </div>
     <div class="row">
       <div class="col-md-12" id="categoryList">
-        <ul class="collection" ng-repeat="category in categories | orderBy: '-timeCreated' ">
+        <div class="jumbotron" ng-show="noCategory">No categories added yet</div>
+        <ul class="collection" ng-repeat="category in categories">
           <a class="collection-item" ng-click="viewCatgeory($index)">{{category.name}}
             <span style="color: black;">{{category.createdAt | date:'medium' }}</span>
           </a>
+          <span class="badge" style="background-color:red;" ng-click="deleteBudget($index)">
+            <i class="mdi-content-clear"></i>
+          </span>
         </ul>
       </div>
     </div>
@@ -74,9 +78,14 @@
 
     <div class="row">
       <div class="col-md-12">
+        <div class="jumbotron" ng-show="noItems">No items added yet</div>
         <div id="itemsList">
             <ul class="collection" ng-repeat="item in items">
-              <a class="collection-item">{{item.name}}<span class="badge">{{item.price | currency: '₦'}}</span></a>
+              <a class="collection-item">{{item.name}}<span class="badge">{{item.price | currency: '₦'}}</span>
+              </a>
+                <span class="badge" style="background-color:red;" ng-click="deleteItem($index)">
+                  <i class="mdi-content-clear"></i>
+                </span>
             </ul>
           </div>
       </div>

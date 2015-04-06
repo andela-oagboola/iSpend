@@ -1,36 +1,33 @@
 var main = angular.module("main", []);
 
-main.controller('MainCntrl', ['$scope', 'getResource', 'Data', '$rootScope', '$location', '$cookies', '$window', function($scope, getResource, Data, $rootScope, $location, $cookies, $window){
-  //$scope.user = Data;
-  if ($window.sessionStorage.currUser) {
-    $rootScope.user = JSON.parse($window.sessionStorage.currUser);
-    console.log($window.sessionStorage.currUser);
+main.controller('MainCntrl', ['$scope', 'getResource', 'Data', '$location', '$window', function($scope, getResource, Data, $location, $window) {
+  console.log(getResource.loggedInUser);
+  $scope.currentUser = getResource.loggedInUser;
+  if ($scope.currentUser) {
+    // $rootScope.user = JSON.parse($window.sessionStorage.currUser);
+    // $scope.currentUser = $scope.currentUser;
+    $location.path('/users/preference');
   }
   $scope.welcome = "";
   $scope.login = function() {
-    console.log("username ", $scope.username);
     $scope.wrongDetails = true;
     $scope.welcome = "Signed in as " + $scope.username;
     $scope.details = {
       username: $scope.username,
       password: $scope.password
     };
-    getResource.verifyUser($scope.details).success(function (data) {
-      // $rootScope.user = data;
-      // console.log("d user", data);
-      // $scope.currentUser = data;
+    getResource.verifyUser($scope.details).success(function(data) {
       $window.sessionStorage.currUser = JSON.stringify(data);
-      $rootScope.user = JSON.parse($window.sessionStorage.currUser);
-      console.log($window.sessionStorage.currUser);
-      console.log($rootScope.user);
-      $rootScope.username = data.username;
+      $scope.currentUser = JSON.parse($window.sessionStorage.currUser);
+      // console.log($window.sessionStorage.currUser);
+      // console.log($rootScope.user);
+      $scope.currentUser.username = data.username;
       $location.path('/users/preference');
     }).error(function(err) {
-      if(err.message === "Missing credentials") {
+      if (err.message === "Missing credentials") {
         $scope.wrongDetails = false;
         $scope.emptyDetails = true;
-      }
-      else {
+      } else {
         $scope.emptyDetails = false;
         $scope.wrongDetails = true;
       }
@@ -39,7 +36,5 @@ main.controller('MainCntrl', ['$scope', 'getResource', 'Data', '$rootScope', '$l
 
     $scope.username = "";
     $scope.password = "";
-    // getResource.setCookies($scope.currentUser);
-    // console.log(getResource.setCookies($scope.currentUser));
   };
 }]);

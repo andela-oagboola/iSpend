@@ -21,7 +21,6 @@ module.exports = {
   },
 
   getItemByBudget: function(req, res) {
-    console.log(req);
     Items.find({budget: req.params.budgetId}, function(err, items) {
       if(err) {
         res.json(err);
@@ -31,13 +30,12 @@ module.exports = {
   },
 
   deleteItem: function(req, res) {
-    var body = req.body;
-    Items.remove({_id: body._id}, function(err, note) {
+    Items.remove({_id: req.params.itemId}, function(err, note) {
       if(err) {
         res.json(err);
       }
       else {
-        res.json(note);
+        console.log(note);
       }
     });
   }

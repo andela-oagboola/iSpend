@@ -1,4 +1,4 @@
 var getOneUser = angular.module("retrieveUser", []);
-getOneUser.controller("getSingleUser",['$scope', function($scope) {
+getOneUser.controller("getSingleUser",['$scope', 'getResource', function($scope, getResource) {
   $scope.name = $rootScope.name;
 }]);

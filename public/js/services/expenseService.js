@@ -16,6 +16,12 @@ expenseService.factory("budget", function($http, $cookies) {
     },
     addItem: function(item) {
       return $http.post('/item/newitem', item);
+    },
+    deleteItem: function(itemId) {
+      return $http.post('/items/delete/' + itemId);
+    },
+    deleteBudget: function(budgetId) {
+      return $http.post('/budget/delete/' + budgetId);
     }
   };
 });

@@ -15,7 +15,8 @@ var expenseApp = angular.module("expenseApp", [
   'retrieveUser',
   'categoryMod',
   'categoryService',
-  'ngCookies'
+  'ngCookies',
+  // 'materialize'
   ]);
 
 expenseApp.config(['$routeProvider', function($routeProvider) {

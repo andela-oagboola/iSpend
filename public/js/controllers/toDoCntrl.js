@@ -1,10 +1,14 @@
 var toDo = angular.module("toDo", []);
-toDo.controller('toDoCntrl', ['$scope', 'toDo', '$rootScope', function($scope, toDo, $rootScope){
-  $scope.user = $rootScope.user;
+toDo.controller('toDoCntrl', ['$scope', 'toDo', 'getResource', function($scope, toDo, getResource){
+  $scope.user = getResource.loggedInUser;
+  $scope.noToDo = false;
 
   $scope.displayToDo = function() {
     toDo.getToDo($scope.user._id).success(function(result) {
-    $scope.toDos = result;
+      if(result.length === 0) {
+        $scope.noToDo = true;
+      }
+      $scope.toDos = result.reverse();
     }).error(function(err) {
       console.log(err);
     });
@@ -14,11 +18,15 @@ toDo.controller('toDoCntrl', ['$scope', 'toDo', '$rootScope', function($scope, t
     $scope.newToDoField = true;
   };
   $scope.createToDo = function() {
+    if(!$scope.toDo) {
+      return alert("you canot add empty to-do");
+    }
     $scope.myToDo = {
       item: $scope.toDo,
       user: $scope.user._id
     };
     toDo.addToDo($scope.myToDo).success(function(result) {
+      $scope.noToDo = false;
     }).error(function(err) {
       console.log(err);
     });
@@ -32,12 +40,16 @@ toDo.controller('toDoCntrl', ['$scope', 'toDo', '$rootScope', function($scope, t
   };
 
   $scope.deleteItem = function(index) {
-    $scope.itemToBeDeleted = $scope.toDos[index]._id;
-    toDo.delete($scope.itemToBeDeleted).success(function(res) {
-    }).error(function(err) {
-      console.log(err);
-    });
-    $scope.displayToDo();
+    $scope.confirm = confirm("Are you sure you want to delete \"" + $scope.toDos[index].item + "\" ?");
+    if($scope.confirm === true) {
+      $scope.itemToBeDeleted = $scope.toDos[index]._id;
+      toDo.delete($scope.itemToBeDeleted).success(function(res) {
+      }).error(function(err) {
+        console.log(err);
+      });
+      $scope.displayToDo();
+      alert("Deleted!");
+    }
   };
 }]);
 

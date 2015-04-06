@@ -9,6 +9,7 @@ module.exports = function(app) {
   app.get('/', function(req, res) {
     res.sendfile("./public/views/index.html");
   });
+  // app.get('/', users.authenticate);
 
   app.get('/budgets', users.authenticate, Budget.getBudgets);
   
@@ -24,6 +25,8 @@ module.exports = function(app) {
 
   app.get('/budget/:budgetId', Budget.getEachBudget);
 
+  app.post('/budget/delete/:budgetId', Budget.deleteBudget);
+
   app.post('/signUp', users.addUser);
 
   app.get('/budgets/:userId', Budget.getUserBudget);
@@ -31,6 +34,8 @@ module.exports = function(app) {
   app.get('/items', Item.getAllItems);
 
   app.get('/items/:budgetId', Item.getItemByBudget);
+
+  app.post('/items/delete/:itemId', Item.deleteItem);
 
   app.get('/notes', note.getAllNotes);
 

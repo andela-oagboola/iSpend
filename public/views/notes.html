@@ -26,16 +26,17 @@
   </div>
 
   <div class="col-md-8">
+    <div class="jumbotron" ng-show="noNote">Notes</div>
     <div class="input-field" ng-show="newNoteField">
       <input type="text" placeholder="Title" ng-model="newTitle">
       <textarea id="textarea1" class="materialize-textarea" ng-model="newNote" placeholder="Type your note here"></textarea>
       <button class="waves-effect waves-light btn" ng-click="createNote()">Add New Note</button>
     </div>
-    <div class="input-field" ng-show="existingNoteField">
+    <div class="input-field" ng-show="existingNoteField" ng-mouseleave="updateNote(); Materialize.toast('I am a toast!', 3000, 'rounded')">
       <input type="text" placeholder="Title" ng-model="existingTitle" ng-readonly="readonly">
-      <textarea id="textarea2" class="materialize-textarea" ng-model="existingNote"placeholder="Your note" ng-readonly="editable"></textarea>
+      <textarea id="textarea2" class="materialize-textarea" ng-model="existingNote"placeholder="Your note" ng-readonly="readonly"></textarea>
       <button class="waves-effect waves-light btn" ng-click="editNote()">Edit</button>
-      <button class="waves-effect waves-light btn" ng-click="updateNote()">Done</button>
+      <!-- <button class="waves-effect waves-light btn" ng-click="updateNote()">Done</button> -->
     </div>
   </div>
 </div>

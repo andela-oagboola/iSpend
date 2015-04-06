@@ -15,7 +15,6 @@ module.exports = {
 
   addUser: function(req, res) {
     var body = req.body;
-    console.log("body ", body);
     Users.create(body, function(err, user) {
       if (err) {
         res.json(err);
@@ -44,11 +43,8 @@ module.exports = {
 
   addBudget: function(req, res) {
     var body = req.body;
-    console.log("new budget", body);
-    console.log("user id ", req.params);
     Users.where({_id: req.params.userId}).update({budget: body._id}).exec(function(err, user) {
       if(err) {
-        console.log("err ", err);
         res.json(err);
       }
       res.json(user);
@@ -82,14 +78,16 @@ module.exports = {
   },
 
   authenticate: function(req, res, next) {
-    // console.log(9, req);
-    // console.log(req.user);
     if (!req.isAuthenticated()) {
       res.json({
         message: 'User is not logged in'
       });
+      // res.sendfile('./public/views/index.html');
       return;
     }
+    // else {
+    //   res.sendfile('./public/views/preference.html');
+    // }
     next();
   },
   isLoggedIn: function(req, res) {
